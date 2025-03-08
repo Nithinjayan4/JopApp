@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 8000, // Ensures the dev server runs on port 3000
+    port: 5173, // Ensures the dev server runs on port 3000
     hmr: {
       host: "localhost", // Ensures Hot Module Replacement works correctly
     },
