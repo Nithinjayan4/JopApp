@@ -1,15 +1,19 @@
-import path from "path";
-import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src"), // Allows using "@" to refer to "src"
     },
   },
   server: {
+    port: 3000, // Ensures the dev server runs on port 3000
+    hmr: {
+      host: "localhost", // Ensures Hot Module Replacement works correctly
+    },
     proxy: {
       "/api": {
         target: "https://jopapp-0gt0.onrender.com",
@@ -18,4 +22,5 @@ export default defineConfig({
       },
     },
   },
+  base: "/", // Ensures assets are correctly resolved
 });
